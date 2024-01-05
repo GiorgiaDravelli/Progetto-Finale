@@ -1,0 +1,14 @@
+.logo {
+    border-radius: 50%;
+    height: 80px;
+    width: 105px;
+  }
+
+  .navbar-brand:hover {
+    font-size: 2rem;
+    transition: all .6s;
+  }
+
+ header {
+  background-color: rgb(40, 40, 16);
+ } 
