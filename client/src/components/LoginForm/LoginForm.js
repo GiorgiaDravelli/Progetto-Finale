@@ -2,12 +2,16 @@ import '../SignupForm/SignupForm.css'
 import { Form, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(false);
+// const [username, setUsername] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [login, setLogin] = useState(false);
+
+const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,9 +26,20 @@ export const LoginForm = () => {
   
     axios(configuration)
         .then((result) => {
+          console.log(result)
           setLogin(true);
+          if (email && password) {
+            navigate("/");
+          }
         })
         .catch((error) => {
+          if (!error?.response) {
+            alert('No Server Response')
+          } else if ( error.response?.status === 400) {
+            alert('Missing Username or Password')
+          } else if (error.response?.status === 401) {
+            alert('Unauthorized')
+          } else ( alert('Login failed'))
           error = new Error();
         });
   }
@@ -33,6 +48,19 @@ export const LoginForm = () => {
       <div className="form">
       <h2>Log In</h2>
         <Form onSubmit={(e)=>handleSubmit(e)}>
+        {/* username */}
+
+        {/* <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control 
+            type="text" 
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Your user name"
+            />
+          </Form.Group> */}
+
           {/* email */}
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -63,11 +91,11 @@ export const LoginForm = () => {
           type="submit">
             Submit
           </Button>
-          {login ? (
+          {/* {login ? (
             <p className="text-success">You Are Logged In Successfully</p>
           ) : (
             <p className="text-danger">You Are Not Logged In</p>
-          )}
+          )} */}
         </Form>
       </div>
     )

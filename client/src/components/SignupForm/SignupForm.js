@@ -2,12 +2,16 @@ import './SignupForm.css'
 import { Form, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const SignupForm = () => {
 
+const [username, setUsername] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [register, setRegister] = useState(false);
+
+const navigate = useNavigate();
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -15,16 +19,29 @@ const handleSubmit = (e) => {
     method: "post",
     url: "https://biodiversitygardens.onrender.com/signup",
     data: {
+      username,
       email,
       password,
     },
   };
 
+  if (username && email && password) {
+    navigate("/");
+  }
+
   axios(configuration)
       .then((result) => {
         setRegister(true);
+        console.log(result)
       })
       .catch((error) => {
+        if (!error?.response) {
+          alert('No Server Response')
+        } else if ( error.response?.status === 400) {
+          alert('Missing Username or Password')
+        } else if (error.response?.status === 401) {
+          alert('Unauthorized')
+        } else ( alert('Signup failed'))
         error = new Error();
       });
 }
@@ -33,6 +50,19 @@ const handleSubmit = (e) => {
     <div className="form">
     <h2>Registrati</h2>
       <Form onSubmit={(e)=>handleSubmit(e)}>
+        {/* username */}
+
+      <Form.Group controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control 
+          type="text" 
+          name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Your user name"
+          />
+        </Form.Group>
+
         {/* email */}
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -63,11 +93,11 @@ const handleSubmit = (e) => {
         type="submit">
           Submit
         </Button>
-        {register ? (
+        {/* {register ? (
           <p className="text-success">You Are Registered Successfully</p>
         ) : (
           <p className="text-danger">You Are Not Registered</p>
-        )}
+        )} */}
       </Form>
     </div>
     )

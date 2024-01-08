@@ -47,6 +47,7 @@ app.post("/signup", (request, response) => {
     .then((hashedPassword) => {
       // create a new user instance and collect the data
       const user = new User({
+        username: request.body.username,
         email: request.body.email,
         password: hashedPassword,
       });
@@ -58,6 +59,8 @@ app.post("/signup", (request, response) => {
         .then((result) => {
           response.status(201).send({
             message: "User Created Successfully",
+            username: user.username,
+            email: user.email,
             result,
           });
         })
@@ -113,6 +116,7 @@ app.post("/login", (request, response) => {
           //   return success response
           response.status(200).send({
             message: "Login Successful",
+            username: user.username,
             email: user.email,
             token,
           });

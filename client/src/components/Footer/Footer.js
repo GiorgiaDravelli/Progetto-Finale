@@ -8,7 +8,7 @@ export const Footer = () => {
 
             <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-                &copy; Copyright <strong><span>Biodiversity Gardens</span></strong>. All Rights Reserved
+                Created by Giorgia Dravelli - 2024
             </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">

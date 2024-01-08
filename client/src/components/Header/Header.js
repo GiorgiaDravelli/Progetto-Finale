@@ -9,10 +9,11 @@ const handleClickScroll = (id) => {
 };
 
 export const Header = () => {
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <Link to="/">
             <img className='logo' src={require('../../assets/logo.png')} alt="logo"/>
           </Link>
@@ -45,10 +46,7 @@ export const Header = () => {
             <Link to="/#contacts" className="nav-link" onClick={() => handleClickScroll("contact")}>Contatti</Link>
             </li>
             <li className="nav-item">
-            <Link to={"/signup"} className="nav-link">Registrati</Link>
-            </li>
-            <li className="nav-item">
-            <Link to="/login" className="nav-link">Log In</Link>
+            <Link to={"/signup"} className="nav-link">Accedi</Link>
             </li>
           </ul>
         </div>
