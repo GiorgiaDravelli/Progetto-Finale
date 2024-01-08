@@ -13,7 +13,7 @@ export const LoginForm = () => {
     e.preventDefault();
     const configuration = {
       method: "post",
-      url: "https://biodiversitygardens.onrender.com/signup",
+      url: "https://biodiversitygardens.onrender.com/login",
       data: {
         email,
         password,

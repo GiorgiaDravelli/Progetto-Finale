@@ -11,7 +11,6 @@ const User = require("./db/userModel");
 const auth = require("./auth");
 
 app.use(cors({
-  origin: 'http://localhost:3000'
 }));
 
 // execute database connection
@@ -41,7 +40,7 @@ app.get("/", (request, response, next) => {
 });
 
 // register endpoint
-app.post("/register", (request, response) => {
+app.post("/signup", (request, response) => {
   // hash the password
   bcrypt
     .hash(request.body.password, 10)
