@@ -3,11 +3,16 @@ const app = express();
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 // require database connection
 const dbConnect = require("./db/dbConnect");
 const User = require("./db/userModel");
 const auth = require("./auth");
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 // execute database connection
 dbConnect();

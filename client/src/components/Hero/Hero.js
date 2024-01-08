@@ -1,4 +1,5 @@
 import './Hero.css';
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
     return (
@@ -6,8 +7,8 @@ export const Hero = () => {
         <div className="container text-center text-md-left" data-aos="fade-up">
             <h1>Biodiversity Gardens</h1>
             <h2>Progettazione e realizzazione di giardini per la biodiversitá</h2>
-            <button type="button" className="btn btn-outline-light">Registrati</button>
-            <button type="button" className="btn btn-outline-light">Accedi</button>
+            <Link to={"/signup"} ><button type="button" className="btn btn-outline-light">Registrati</button></Link>
+            <Link to="/login"><button type="button" className="btn btn-outline-light">Accedi</button></Link>
         </div>
   </section>
     )

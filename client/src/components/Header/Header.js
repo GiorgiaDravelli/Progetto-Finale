@@ -27,28 +27,28 @@ export const Header = () => {
             <Link to="/" className="nav-link" onClick={() => handleClickScroll("home")}>Home</Link>
             </li>
             <li className="nav-item">
-            <Link to="/WhatWeDo" className="nav-link" onClick={() => handleClickScroll("what-we-do")}>Cosa Facciamo</Link>
+            <Link to="/#WhatWeDo" className="nav-link" onClick={() => handleClickScroll("what-we-do")}>Cosa Facciamo</Link>
             </li>
             <li className="nav-item">
             <Link to="/#about" className="nav-link" onClick={() => handleClickScroll("about")}>Chi Siamo</Link>
             </li>
             <li className="nav-item">
-            <Link to="/services" className="nav-link" onClick={() => handleClickScroll("services")}>Servizi</Link>
+            <Link to="/#services" className="nav-link" onClick={() => handleClickScroll("services")}>Servizi</Link>
             </li>
             <li className="nav-item">
-            <Link to="/portfolio" className="nav-link"onClick={() => handleClickScroll("portfolio")}>Portfolio</Link>
+            <Link to="/#portfolio" className="nav-link"onClick={() => handleClickScroll("portfolio")}>Portfolio</Link>
             </li>
             <li className="nav-item">
-            <Link to="/team" className="nav-link" onClick={() => handleClickScroll("team")}>Team</Link>
+            <Link to="/#team" className="nav-link" onClick={() => handleClickScroll("team")}>Team</Link>
             </li>
             <li className="nav-item">
-            <Link to="/contacts" className="nav-link" onClick={() => handleClickScroll("contact")}>Contatti</Link>
+            <Link to="/#contacts" className="nav-link" onClick={() => handleClickScroll("contact")}>Contatti</Link>
             </li>
             <li className="nav-item">
-            <Link to="/register" className="nav-link">Registrati</Link>
+            <Link to={"/signup"} className="nav-link">Registrati</Link>
             </li>
             <li className="nav-item">
-            <Link to="/logIn" className="nav-link">Log In</Link>
+            <Link to="/login" className="nav-link">Log In</Link>
             </li>
           </ul>
         </div>
