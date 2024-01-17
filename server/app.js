@@ -142,8 +142,35 @@ app.post("/login", (request, response) => {
 
 // update profile 
 
-app.post("/profile", auth, (request, response) => {
-  const user =  User.findById(request.user._id)
+app.post("/profile", auth, async (request, response) => {
+
+  // try {
+  //   const emailToUpdate = req.params.email;
+  //   const update = req.body;
+  //   const user = await User.findOne({ email: emailToUpdate });
+
+  //   if (!user) {
+  //     return res.status(404).json({ error: "User not found." });
+  //   }
+
+  //   if (update.username) {
+  //     user.username = update.username;
+  //   }
+  //   if (update.email) {
+  //     if (!emailRegex.test(update.email)) {
+  //       throw new Error("Email not provided correctly");
+  //     }
+  //     user.email = update.email;
+  //   }
+
+  //   const updatedUser = await user.save();
+  //   res.status(200).json(updatedUser);
+  // } catch (error) {
+  //   res.status(500).json({ error: "Unable to update the user." });
+  // }
+
+
+  const user =  await User.findById(request.user._id)
 
   if (user) {
     user.usernamename = request.body.username || user.username;
@@ -153,7 +180,7 @@ app.post("/profile", auth, (request, response) => {
       user.password = request.body.password;
     }
 
-    const updatedUser =  user.save();
+    const updatedUser = await user.save();
 
     response.json({
       _id: updatedUser._id,
@@ -168,13 +195,29 @@ app.post("/profile", auth, (request, response) => {
         "RANDOM-TOKEN",
         { expiresIn: "24h" }
       )
-    }).send()
+    })
   }
   else {
     response.status(404)
     throw new Error("User not found");
   }
 });
+
+
+// delete profile 
+
+app.delete("/profile", auth, async (req, res) => {
+  try {
+    const user = await User.findOneAndDelete({ id: req.params._id });
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: "Unable to delete the user." });
+    console.log(error.message)
+  }
+})
 
 // !!!!ESEMPI!!!! come proteggere route con autenticazione
 
