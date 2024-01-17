@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './LoginForm.css'
 
 export const LoginForm = () => {
 
