@@ -1,17 +1,30 @@
 import { Link } from "react-router-dom";
 import './Header.css';
+import { Nav } from "react-bootstrap";
+import { useState } from 'react'
 
-const handleClickScroll = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
 
 export const Header = () => {
 
+  const handleClickScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const token = localStorage.getItem('token')
+  const username = localStorage.getItem('username')
+
+  const [userName, setUserName] = useState(localStorage.getItem('username'))
+
+    const handleLogOut = () => {
+        localStorage.clear()
+        setUserName()
+      }
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <Nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           <Link to="/">
@@ -28,7 +41,7 @@ export const Header = () => {
             <Link to="/" className="nav-link" onClick={() => handleClickScroll("home")}>Home</Link>
             </li>
             <li className="nav-item">
-            <Link to="/#WhatWeDo" className="nav-link" onClick={() => handleClickScroll("what-we-do")}>Cosa Facciamo</Link>
+            <Link to="/#what-we-do" className="nav-link" onClick={() => handleClickScroll("what-we-do")}>Cosa Facciamo</Link>
             </li>
             <li className="nav-item">
             <Link to="/#about" className="nav-link" onClick={() => handleClickScroll("about")}>Chi Siamo</Link>
@@ -45,12 +58,28 @@ export const Header = () => {
             <li className="nav-item">
             <Link to="/#contacts" className="nav-link" onClick={() => handleClickScroll("contact")}>Contatti</Link>
             </li>
-            <li className="nav-item">
+            { !token? (<li className="nav-item">
             <Link to={"/signup"} className="nav-link">Accedi</Link>
+            </li>) :  <><li className="nav-item">
+
+            <div class="btn-group" role="group">
+              <button type="button" className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Benvenuto, {`${username}`}
+              </button>
+              <ul className="dropdown-menu">
+                <li><Link to="/profile" className="nav-link">Profilo</Link></li>
+                <li><Link to="" className="nav-link" onClick={() => handleLogOut()}>Log Out</Link></li>
+              </ul>
+            </div>
+
+            {/* <p className="nav-link">Benvenuto, {`${username}`}</p>
             </li>
+            <li className="nav-item">
+            <Link to="" className="nav-link" onClick={() => handleLogOut()}>Log Out</Link> */}
+            </li></> }
           </ul>
         </div>
       </div>
-    </nav>
+    </Nav>
   )
 }

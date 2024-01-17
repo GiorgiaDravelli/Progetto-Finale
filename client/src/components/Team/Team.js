@@ -11,21 +11,19 @@ export const Team = () => {
   
           <div className="section-title">
             <h2>Team</h2>
-            <p>Sit sint consectetur velit quos quisquam cupiditate nemo qui</p>
           </div>
   
           <div className="row">
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div className="member">
                 <img src={person1} alt=""/>
-                <h4>Gattino 1</h4>
-                <span>Super capo supremo</span>
+                <h4>Jacopo Cristoni</h4>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                  Dottore Magistrale in Ecologia ed Etologia per la Conservazione della Natura
                 </p>
                 <div className="social">
                   {/* <a href=""><i className="bi bi-twitter"></i></a> */}
-                  <a href=""><i className="bi bi-facebook"><CiFacebook/></i></a>
+                  <a href="https://www.facebook.com/jacopocypher"><i className="bi bi-facebook"><CiFacebook/></i></a>
                   {/* <a href=""><i className="bi bi-instagram"></i></a>
                   <a href=""><i className="bi bi-linkedin"></i></a> */}
                 </div>
@@ -35,14 +33,13 @@ export const Team = () => {
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div className="member">
                 <img src={person2} alt=""/>
-                <h4>Gattino 2</h4>
-                <span>Product Manager</span>
+                <h4>Marco Palmieri</h4>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                  Dottore Magistrale in Archeologia <br/> e Archeomalacologo
                 </p>
                 <div className="social">
                   {/* <a href=""><i className="bi bi-twitter"></i></a> */}
-                  <a href=""><i className="bi bi-facebook"><CiFacebook/></i></a>
+                  {/* <a href=""><i className="bi bi-facebook"><CiFacebook/></i></a> */}
                   {/* <a href=""><i className="bi bi-instagram"></i></a>
                   <a href=""><i className="bi bi-linkedin"></i></a> */}
                 </div>
@@ -52,14 +49,13 @@ export const Team = () => {
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div className="member">
                 <img src={person3} alt=""/>
-                <h4>Gattino 3</h4>
-                <span>CEO</span>
+                <h4>Danio Miserocchi</h4>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                  Dottore in Scienze Naturali e Guida Ambientale Escursionistica
                 </p>
                 <div className="social">
                   {/* <a href=""><i className="bi bi-twitter"></i></a> */}
-                  <a href=""><i className="bi bi-facebook"><CiFacebook/></i></a>
+                  {/* <a href=""><i className="bi bi-facebook"><CiFacebook/></i></a> */}
                   {/* <a href=""><i className="bi bi-instagram"></i></a>
                   <a href=""><i className="bi bi-linkedin"></i></a> */}
                 </div>

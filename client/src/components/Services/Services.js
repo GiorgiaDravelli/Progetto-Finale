@@ -19,44 +19,44 @@ export const Services = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="icon-box">
-              <i className="bi bi-briefcase"><LiaFrogSolid/></i>
-              <h4><a href="#">Laghetti per Anfibi</a></h4>
+              <i><LiaFrogSolid/></i>
+              <h4>Laghetti per Anfibi</h4>
               <p>Progettiamo e realizziamo oasi per anfibi e altri animali amanti delle zone umide, esteticamente gradevoli e di facile gestione, utilizzando esclusivamente piante acquatiche e palustri autoctone</p>
             </div>
           </div>
           <div className="col-md-6 mt-4 mt-lg-0">
             <div className="icon-box">
-              <i className="bi bi-card-checklist"><GiBee/></i>
-              <h4><a href="#">Aiuole per Impollinatori</a></h4>
+              <i><GiBee/></i>
+              <h4>Aiuole per Impollinatori</h4>
               <p>Progettiamo e realizziamo aiuole in grado di attrarre e sostentare insetti impollinatori selezionando le piante nettarifere più indicate per il territorio di appartenenza</p>
             </div>
           </div>
           <div className="col-md-6 mt-4">
             <div className="icon-box">
-              <i className="bi bi-bar-chart"><GiNestBirds/></i>
-              <h4><a href="#">Rifugi Artificiali</a></h4>
+              <i><GiNestBirds/></i>
+              <h4>Rifugi Artificiali</h4>
               <p>Forniamo e installiamo rifugi artificiali per la fauna selvatica del giardino, come nidi per uccelli, cassette nido per api solitarie e hibernacula per rettili e anfibi</p>
             </div>
           </div>
           <div className="col-md-6 mt-4">
             <div className="icon-box">
-              <i className="bi"><PiPlant/></i>
-              <h4><a href="#">Vendita Piante</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <i><PiPlant/></i>
+              <h4>Vendita Piante</h4>
+              <p>Presso il nostro vivaio potrete trovare più di 40 specie appartenenti alla flora locale, indispensabili per trasformare i vostri giardini in rigogliose oasi per la biodiversitá</p>
             </div>
           </div>
           <div className="col-md-6 mt-4">
             <div className="icon-box">
-              <i className="bi bi-brightness-high"><GiGardeningShears/></i>
-              <h4><a href="#">Manutenzione </a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <i><GiGardeningShears/></i>
+              <h4>Manutenzione </h4>
+              <p>Eseguiamo lavori per il mantenimento in salute del giardino, come taglio dell'erba, potature di alberi e arbusti e rimozione di piante infestanti </p>
             </div>
           </div>
           <div className="col-md-6 mt-4">
             <div className="icon-box">
-              <i className="bi bi-calendar4-week"><BsEyeglasses/></i>
-              <h4><a href="#">Consulenze</a></h4>
-              <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <i><BsEyeglasses/></i>
+              <h4>Consulenze</h4>
+              <p>Mettiamo a disposizione le nostre competenze per consulenze telefoniche o in presenza per guidarvi nella gestione sostenibile dei vostri giardini</p>
             </div>
           </div>
         </div>

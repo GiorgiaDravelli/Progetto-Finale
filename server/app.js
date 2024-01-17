@@ -16,7 +16,7 @@ app.use(cors({
 // execute database connection
 dbConnect();
 
-// Curb Cores Error by adding a header here
+// Curb Cores Error by adding a header
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -64,7 +64,7 @@ app.post("/signup", (request, response) => {
             result,
           });
         })
-        // catch erroe if the new user wasn't added successfully to the database
+        // catch error if the new user wasn't added successfully to the database
         .catch((error) => {
           response.status(500).send({
             message: "Error creating user",
@@ -136,6 +136,43 @@ app.post("/login", (request, response) => {
         e,
       });
     });
+});
+
+
+// update profile 
+
+app.post("/profile", auth, async (request, response) => {
+  const user = await User.findById(request.user._id)
+
+  if (user) {
+    user.name = request.body.username || user.username;
+    user.email = request.body.email || user.email;
+
+    if (request.body.password) {
+      user.password = request.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    response.json({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      token: jwt.sign(
+        {
+          userId: updatedUser._id,
+          userEmail: updatedUser.email,
+        },
+        "RANDOM-TOKEN",
+        { expiresIn: "24h" }
+      )
+    })
+  }
+  else {
+    response.status(404)
+    throw new Error("User not found");
+  }
 });
 
 // !!!!ESEMPI!!!! come proteggere route con autenticazione

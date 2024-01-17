@@ -17,7 +17,7 @@ export const WhatWeDo = () => {
           <div className="row">
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
               <div className="icon-box">
-                <div className="icon"><i className="bx bxl-dribbble"><SiHomebridge/></i></div>
+                <div className="icon"><i><SiHomebridge/></i></div>
                 <h4>Realizzazione Habitat</h4>
                 <p>Progettiamo e realizziamo habitat terrestri e acquatici su misura volti alla conservazione della biodiversitá locale</p>
               </div>
@@ -25,7 +25,7 @@ export const WhatWeDo = () => {
   
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
               <div className="icon-box">
-                <div className="icon"><i className="bx bx-file"><PiFlowerLotus/></i></div>
+                <div className="icon"><i><PiFlowerLotus/></i></div>
                 <h4>Coltivazione Piante Autoctone</h4>
                 <p>Per la realizzazione dei nostri habitat utilizziamo specie autoctone di origine locale coltivate direttamente nel nostro vivaio</p>
               </div>
@@ -33,9 +33,9 @@ export const WhatWeDo = () => {
   
             <div className="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
               <div className="icon-box">
-                <div className="icon"><i className="bx bx-tachometer"><FaGlasses/></i></div>
+                <div className="icon"><i><FaGlasses/></i></div>
                 <h4>Consulenza</h4>
-                <p>Grazie alle nostre competenze accademiche e esperienze sul campo siamo in grado di offrirvi le migliori consulenze per la gestione sostenibile dei vostri giardini</p>
+                <p>Grazie alle nostre competenze accademiche ed esperienze sul campo siamo in grado di offrirvi le migliori consulenze per la gestione sostenibile dei vostri giardini</p>
               </div>
             </div>
   

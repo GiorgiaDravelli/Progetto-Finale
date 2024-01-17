@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
 
-// const [username, setUsername] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [login, setLogin] = useState(false);
@@ -28,9 +27,13 @@ const navigate = useNavigate();
         .then((result) => {
           console.log(result)
           setLogin(true);
-          if (email && password) {
-            navigate("/");
-          }
+          const username = result.data.username
+          localStorage.setItem('username', result.data.username);
+          console.log(username)
+          localStorage.setItem('token', result.data.token);
+          console.log(result.data.token)
+
+          navigate("/")
         })
         .catch((error) => {
           if (!error?.response) {
@@ -45,25 +48,13 @@ const navigate = useNavigate();
   }
   
     return (
-      <div className="form">
-      <h2>Log In</h2>
+    <div className="form">
+      <div>
+        <h2>Log In</h2>
         <Form onSubmit={(e)=>handleSubmit(e)}>
-        {/* username */}
-
-        {/* <Form.Group controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control 
-            type="text" 
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Your user name"
-            />
-          </Form.Group> */}
-
           {/* email */}
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Indirizzo Email</Form.Label>
             <Form.Control 
             type="email" 
             name="email"
@@ -72,7 +63,7 @@ const navigate = useNavigate();
             placeholder="Enter email"
             />
           </Form.Group>
-  
+
           {/* password */}
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
@@ -83,20 +74,16 @@ const navigate = useNavigate();
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password" />
           </Form.Group>
-  
+
           {/* submit button */}
           <Button className="btn-signup" 
-          variant="secondary" 
-          onClick={(e) => handleSubmit(e)}
-          type="submit">
-            Submit
+            variant="secondary" 
+            onClick={(e) => handleSubmit(e)}
+            type="submit">
+              Invia
           </Button>
-          {/* {login ? (
-            <p className="text-success">You Are Logged In Successfully</p>
-          ) : (
-            <p className="text-danger">You Are Not Logged In</p>
-          )} */}
         </Form>
       </div>
+    </div>
     )
   }

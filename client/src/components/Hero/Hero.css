@@ -1,10 +1,10 @@
 #hero {
     width: 100%;
     height: 60vh;
-    background: url("../../assets/pond.jpg") center center;
+    background: url("../../assets/pond.jpeg") center center;
     background-size: cover;
     position: relative;
-    margin-top: 0px;
+    margin-top: 80px;
     padding: 0px;
   }
   

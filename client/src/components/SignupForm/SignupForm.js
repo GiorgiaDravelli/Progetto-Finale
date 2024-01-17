@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SignupForm = () => {
 
@@ -25,14 +26,14 @@ const handleSubmit = (e) => {
     },
   };
 
-  if (username && email && password) {
-    navigate("/");
-  }
-
   axios(configuration)
       .then((result) => {
         setRegister(true);
         console.log(result)
+        localStorage.setItem('username', result.data.username);
+        localStorage.setItem('token', result.data.token);
+        localStorage.setItem('email', result.data.email);
+        navigate("/")
       })
       .catch((error) => {
         if (!error?.response) {
@@ -48,57 +49,53 @@ const handleSubmit = (e) => {
 
     return (
     <div className="form">
-    <h2>Registrati</h2>
-      <Form onSubmit={(e)=>handleSubmit(e)}>
-        {/* username */}
-
-      <Form.Group controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
-          <Form.Control 
-          type="text" 
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Your user name"
-          />
-        </Form.Group>
-
-        {/* email */}
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control 
-          type="email" 
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter email"
-          />
-        </Form.Group>
-
-        {/* password */}
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-          type="password" 
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password" />
-        </Form.Group>
-
-        {/* submit button */}
-        <Button className="btn-signup" 
-        variant="secondary" 
-        onClick={(e) => handleSubmit(e)}
-        type="submit">
-          Submit
-        </Button>
-        {/* {register ? (
-          <p className="text-success">You Are Registered Successfully</p>
-        ) : (
-          <p className="text-danger">You Are Not Registered</p>
-        )} */}
-      </Form>
+      <div>
+        <h2>Registrati</h2>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
+          {/* username */}
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control 
+            type="text" 
+            name="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Your user name"
+            />
+          </Form.Group>
+  
+          {/* email */}
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Indirizzo Email</Form.Label>
+            <Form.Control 
+            type="email" 
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email"
+            />
+          </Form.Group>
+  
+          {/* password */}
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control 
+            type="password" 
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password" />
+          </Form.Group>
+  
+          {/* submit button */}
+          <Button className="btn-signup" 
+            variant="secondary" 
+            onClick={(e) => handleSubmit(e)}
+            type="submit">
+              Invia
+          </Button>
+        </Form>
+      </div>
     </div>
     )
   }
