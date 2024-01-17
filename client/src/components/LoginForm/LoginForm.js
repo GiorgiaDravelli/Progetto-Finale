@@ -32,6 +32,8 @@ const navigate = useNavigate();
           console.log(username)
           localStorage.setItem('token', result.data.token);
           console.log(result.data.token)
+          localStorage.setItem('email', result.data.email);
+          console.log(result.data.email)
 
           navigate("/")
         })

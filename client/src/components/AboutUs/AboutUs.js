@@ -1,6 +1,5 @@
 import './AboutUs.css';
 import createpond from '../../assets/createpond.jpg';
-import { FaCheck, FaSun } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 
 
@@ -22,7 +21,9 @@ export const AboutUs = () => {
             <ul>
               <li><i><GoDotFill/></i> Realizzazione e gestione di habitat artificiali e seminaturali</li>
               <li><i><GoDotFill/></i> Mantenimento "low-effort" di giardini sostenibili </li>
-              <li><i><GoDotFill/></i> Riconoscimento a livello tassonomico di fauna e flora </li>
+              <li><i><GoDotFill/></i> Coltivazione di piante autoctone a fini conservazionistici </li>
+              <li><i><GoDotFill/></i> Riconoscimento a livello tassonomico della fauna minore </li>
+              <li><i><GoDotFill/></i> Riconoscimento a livello tassonomico della flora spontanea </li>
               <li><i><GoDotFill/></i> Contrasto alla presenza di specie aliene invasive </li>
             </ul>
           </div>

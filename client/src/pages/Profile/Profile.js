@@ -1,7 +1,7 @@
 import "./Profile.css"
 import { Header } from '../../components/Header/Header'
 import { Footer } from '../../components/Footer/Footer';
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const Profile = () => {
@@ -21,24 +21,25 @@ export const Profile = () => {
         };
       
         axios(configuration)
-            .then((result) => {
-              console.log(result)
-              const username = result.data.username
-              localStorage.setItem('username', result.data.username);
-              console.log(username)
-              localStorage.setItem('email', result.data.email);
-              console.log(email)
-            })
-            .catch((error) => {
-              if (!error?.response) {
-                alert('No Server Response')
-              } else if ( error.response?.status === 400) {
-                alert('Missing Username or Password')
-              } else if (error.response?.status === 401) {
-                alert('Unauthorized')
-              } else ( alert('Login failed'))
-              error = new Error();
-            });
+          .then((result) => {
+            console.log(result)
+            const username = result.data.username
+            localStorage.setItem('username', result.data.username);
+            console.log(username)
+            localStorage.setItem('email', result.data.email);
+            console.log(email)
+          })
+          .catch((error) => {
+            console.log(error)
+            if (!error?.response) {
+              alert('No Server Response')
+            } else if ( error.response?.status === 400) {
+              alert('Missing Username or Password')
+            } else if (error.response?.status === 401) {
+              alert('Unauthorized')
+            } else ( alert('Login failed'))
+            error = new Error();
+          });
       }
 
     return (

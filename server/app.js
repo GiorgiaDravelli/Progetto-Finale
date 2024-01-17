@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
+
 // require database connection
 const dbConnect = require("./db/dbConnect");
 const User = require("./db/userModel");
@@ -141,18 +142,18 @@ app.post("/login", (request, response) => {
 
 // update profile 
 
-app.post("/profile", auth, async (request, response) => {
-  const user = await User.findById(request.user._id)
+app.post("/profile", auth, (request, response) => {
+  const user =  User.findById(request.user._id)
 
   if (user) {
-    user.name = request.body.username || user.username;
+    user.usernamename = request.body.username || user.username;
     user.email = request.body.email || user.email;
 
     if (request.body.password) {
       user.password = request.body.password;
     }
 
-    const updatedUser = await user.save();
+    const updatedUser =  user.save();
 
     response.json({
       _id: updatedUser._id,
@@ -167,7 +168,7 @@ app.post("/profile", auth, async (request, response) => {
         "RANDOM-TOKEN",
         { expiresIn: "24h" }
       )
-    })
+    }).send()
   }
   else {
     response.status(404)

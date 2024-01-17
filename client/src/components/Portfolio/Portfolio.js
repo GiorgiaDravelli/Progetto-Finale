@@ -1,10 +1,10 @@
 import "./Portfolio.css"
-import img1 from '../../assets/img1.jpg';
-import img2 from '../../assets/img2.jpg';
+import img1 from '../../assets/img1.jpeg';
+import img2 from '../../assets/img2.jpeg';
 import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import img5 from '../../assets/img5.jpg';
-import img6 from '../../assets/img6.jpg';
+import img4 from '../../assets/img4.jpeg';
+import img5 from '../../assets/img5.jpeg';
+import img6 from '../../assets/img6.JPG';
 
 export const Portfolio = () => {
     return (
@@ -13,7 +13,7 @@ export const Portfolio = () => {
   
           <div className="section-title">
             <h2>Portfolio</h2>
-            <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit</p>
+            <p>Alcuni lavori realizzati e traguardi raggiunti</p>
           </div>
   
           <div className="row portfolio-container">
@@ -25,8 +25,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img1</h4>
-                  <p>luogo</p>
+                  <h4>Laghetto per la Biodiversitá</h4>
+                  <p>fattoria didattica accanto, modena (mo)</p>
                 </div>
               </div>
             </div>
@@ -38,8 +38,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img2</h4>
-                  <p>luogo</p>
+                  <h4>Laghetto per la Biodiversitá</h4>
+                  <p>privato, calcara (bo)</p>
                 </div>
               </div>
             </div>
@@ -51,8 +51,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img 3</h4>
-                  <p>luogo</p>
+                  <h4>Laghetto per la Biodiversitá</h4>
+                  <p>az. agr. dalle alpi all'appennino, formigine (mo)</p>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img 4</h4>
-                  <p>luogo</p>
+                  <h4>Colonizzazione di Rana dalmatina</h4>
+                  <p>privato, calcara (bo)</p>
                 </div>
               </div>
             </div>
@@ -77,8 +77,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img 5</h4>
-                  <p>Web</p>
+                  <h4>Coltivazione di Hottonia palustris</h4>
+                  <p>privato, calcara (bo)</p>
                 </div>
               </div>
             </div>
@@ -90,8 +90,8 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Img 6</h4>
-                  <p>luogo</p>
+                  <h4>Colonizzazione di Triturus carnifex</h4>
+                  <p>privato, lizzano in belvedere (bo)</p>
                 </div>
               </div>
             </div>
