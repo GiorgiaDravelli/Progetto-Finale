@@ -26,11 +26,6 @@
     margin: 0;
   }
   
-  .portfolio .portfolio-item figure:hover img {
-    opacity: 0.4;
-    transition: 0.4s;
-  }
-  
   .portfolio .portfolio-item figure .link-preview,
   .portfolio .portfolio-item figure .link-details {
     position: absolute;

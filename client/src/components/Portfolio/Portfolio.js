@@ -90,7 +90,7 @@ export const Portfolio = () => {
                 </figure>
   
                 <div className="portfolio-info">
-                  <h4>Colonizzazione di Triturus carnifex</h4>
+                  <h4>Triturus carnifex</h4>
                   <p>privato, lizzano in belvedere (bo)</p>
                 </div>
               </div>
