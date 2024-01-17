@@ -67,7 +67,6 @@ export const Header = () => {
               Benvenuto, {`${username}`}
               </button>
               <ul className="dropdown-menu">
-                <li><Link to="/profile" className="nav-link">Profilo</Link></li>
                 <li><Link to="" className="nav-link" onClick={() => handleLogOut()}>Log Out</Link></li>
               </ul>
             </div>
