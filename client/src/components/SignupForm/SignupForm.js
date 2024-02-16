@@ -4,18 +4,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {Loader} from "../Spinner/Spinner"
 
 export const SignupForm = () => {
 
 const [username, setUsername] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
-const [register, setRegister] = useState(false);
+const [register, setRegister] = useState("")
+const [ loggedInState, setLoggedInState] = useState("")
 
 const navigate = useNavigate();
 
 const handleSubmit = (e) => {
   e.preventDefault();
+  setLoggedInState("logging")
   const configuration = {
     method: "post",
     url: "https://biodiversitygardens.onrender.com/signup",
@@ -30,9 +33,11 @@ const handleSubmit = (e) => {
       .then((result) => {
         setRegister(true);
         console.log(result)
+        setLoggedInState("logged")
         localStorage.setItem('username', result.data.username);
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('email', result.data.email);
+        localStorage.setItem('admin', result.data.admin);
         navigate("/")
       })
       .catch((error) => {
@@ -44,6 +49,7 @@ const handleSubmit = (e) => {
           alert('Unauthorized')
         } else ( alert('Signup failed'))
         error = new Error();
+        setLoggedInState("")
       });
 }
 
@@ -61,6 +67,7 @@ const handleSubmit = (e) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Your user name"
+            disabled={loggedInState === "logging" ? true : false}
             />
           </Form.Group>
   
@@ -73,6 +80,7 @@ const handleSubmit = (e) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
+            disabled={loggedInState === "logging" ? true : false}
             />
           </Form.Group>
   
@@ -84,16 +92,18 @@ const handleSubmit = (e) => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password" />
+            placeholder="Password"
+            disabled={loggedInState === "logging" ? true : false} />
           </Form.Group>
-  
-          {/* submit button */}
-          <Button className="btn-signup" 
-            variant="secondary" 
-            onClick={(e) => handleSubmit(e)}
-            type="submit">
-              Invia
-          </Button>
+          <div className='LoginContainer'>
+            {loggedInState === "logging" ? <Loader /> : 
+            <Button className="btn-signup" 
+              variant="secondary" 
+              onClick={(e) => handleSubmit(e)}
+              type="submit">
+                Invia
+            </Button>}
+          </div>
         </Form>
       </div>
     </div>

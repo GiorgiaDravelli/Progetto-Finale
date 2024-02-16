@@ -58,9 +58,15 @@ export const Header = () => {
             <li className="nav-item">
             <Link to="/#contacts" className="nav-link" onClick={() => handleClickScroll("contact")}>Contatti</Link>
             </li>
-            { !token? (<li className="nav-item">
-            <Link to={"/signup"} className="nav-link">Accedi</Link>
-            </li>) :  <><li className="nav-item">
+            <li className="nav-item">
+            <Link to="/store" className="nav-link">Store</Link>
+            </li>
+            { !token? (<><li className="nav-item">
+            <Link to={"/login"} className="nav-link">Accedi</Link>
+            </li>
+            <li className="nav-item">
+            <Link to={"/signup"} className="nav-link">Registrati</Link>
+            </li></>) :  <><li className="nav-item">
 
             <div class="btn-group" role="group">
               <button type="button" className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

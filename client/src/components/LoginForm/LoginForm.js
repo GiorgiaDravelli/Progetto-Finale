@@ -4,17 +4,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './LoginForm.css'
+import {Loader} from "../Spinner/Spinner"
 
 export const LoginForm = () => {
 
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
-const [login, setLogin] = useState(false);
+const [login, setLogin] = useState("")
+const [ loggedInState, setLoggedInState] = useState("")
 
 const navigate = useNavigate();
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoggedInState("logging")
     const configuration = {
       method: "post",
       url: "https://biodiversitygardens.onrender.com/login",
@@ -27,7 +30,8 @@ const navigate = useNavigate();
     axios(configuration)
         .then((result) => {
           console.log(result)
-          setLogin(true);
+          setLogin(true)
+          setLoggedInState("logged")
           const username = result.data.username
           localStorage.setItem('username', result.data.username);
           console.log(username)
@@ -35,6 +39,8 @@ const navigate = useNavigate();
           console.log(result.data.token)
           localStorage.setItem('email', result.data.email);
           console.log(result.data.email)
+          localStorage.setItem('id', result.data._id);
+          localStorage.setItem('admin', result.data.admin);
 
           navigate("/")
         })
@@ -47,6 +53,7 @@ const navigate = useNavigate();
             alert('Unauthorized')
           } else ( alert('Login failed'))
           error = new Error();
+          setLoggedInState("")
         });
   }
   
@@ -64,6 +71,7 @@ const navigate = useNavigate();
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
+            disabled={loggedInState === "logging" ? true : false}
             />
           </Form.Group>
 
@@ -75,16 +83,18 @@ const navigate = useNavigate();
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password" />
+            placeholder="Password"
+            disabled={loggedInState === "logging" ? true : false} />
           </Form.Group>
-
-          {/* submit button */}
-          <Button className="btn-signup" 
-            variant="secondary" 
-            onClick={(e) => handleSubmit(e)}
-            type="submit">
-              Invia
-          </Button>
+          <div className='LoginContainer'>
+            {loggedInState === "logging" ? <Loader /> : 
+            <Button className="btn-signup" 
+              variant="secondary" 
+              onClick={(e) => handleSubmit(e)}
+              type="submit">
+                Invia
+            </Button>}
+          </div>
         </Form>
       </div>
     </div>

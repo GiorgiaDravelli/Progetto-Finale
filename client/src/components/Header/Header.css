@@ -20,4 +20,9 @@
   .navbar-brand{
     font-size: 1.2rem;
   }
+
+  .logo {
+    height: 60px;
+    width: 85px;
+  }
  }
