@@ -35,7 +35,9 @@ module.exports.post_item = async (req, res) => {
         });
         const item = await newItem.save()
         res.status(201).json(item);
+        console.log("req.body: " + req.body)
     } catch (error) {
         res.status(500).json({Error: 'An error occurred.'} + error.message)
+        console.log
     }
 }

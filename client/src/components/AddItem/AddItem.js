@@ -23,7 +23,7 @@ const AddItem = () => {
     const changeOnclick= async (e) => {
         e.preventDefault();
 
-
+        try {
         const formData = new FormData();
 
         formData.append("title", title);
@@ -44,6 +44,11 @@ const AddItem = () => {
         //         console.log(err.message)
         //     })
         const result = await axios.post('http://localhost:3500/items', formData, { headers: { "Content-Type": "multipart/form-data"}})
+        console.log(result)
+        }
+        catch(err){
+            console.log(err.message)
+        }
     }
 
     const token = localStorage.getItem('token')
