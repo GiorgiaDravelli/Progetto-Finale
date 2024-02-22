@@ -46,7 +46,22 @@ app.get("/", (request, response, next) => {
 
 // ITEMS ROUTES PROVVISORIE - DA SPOSTARE
 
+// const multer = require('multer')
+
+// const storage = multer.diskStorage({
+//     destination: (req, file, callback) => {
+//         callback(null, "uploads/")
+//     },
+//     filename: (req, file, callback) => {
+//         callback(null, file.originalname);
+//     }
+// })
+
+// const upload = multer({storage: storage});
+
+
 app.get('/items', itemController.get_items);
+// app.post('/items', upload.any(), itemController.post_item);
 app.post('/items', itemController.post_item);
 app.put('/items/:id', itemController.update_item);
 app.delete('/items/:id', itemController.delete_item);

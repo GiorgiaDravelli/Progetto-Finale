@@ -1,9 +1,4 @@
-// import { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Alert } from 'reactstrap';
-// import { connect } from 'react-redux';
-// import { addItem } from '../../actions/itemActions';
-// import PropTypes from 'prop-types';
-
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -14,7 +9,7 @@ const AddItem = () => {
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
-    const [message, setMessage] = useState("");
+    const [sendItem, setSendItem] = useState(false);
 
     const onChangeImage = e => {
         setImage(e.target.files[0]);
@@ -23,26 +18,48 @@ const AddItem = () => {
     const changeOnclick= async (e) => {
         e.preventDefault();
 
-        try {
-        const formData = new FormData();
+        try{
+            const result = await axios.post("https://biodiversitygardens.onrender.com/items",{
+                title,
+                description,
+                category,
+                price
+            }, { headers: { "Content-Type": "application/json"}})
 
-        formData.append("title", title);
-        formData.append("description", description);
-        formData.append("category", category);
-        formData.append("price", price);
-        formData.append("image", image);
-
-        setTitle("");
-        setDescription("");
-        setCategory("");
-        setPrice("")
-
-        const result = await axios.post('http://localhost:3500/items', formData, { headers: { "Content-Type": "multipart/form-data"}})
-        console.log(result)
-        }
-        catch(err){
+            console.log(result)
+            setSendItem(true)
+        } catch(err){
             console.log(err.message)
         }
+
+
+
+        // console.log("title " + title)
+        // console.log("description " +description)
+        // console.log("category " +category)
+        // console.log("price " +price)
+        // console.log("image " +image)
+
+        // try {
+        // const formData = new FormData();
+
+        // formData.append("title", title);
+        // formData.append("description", description);
+        // formData.append("category", category);
+        // formData.append("price", price);
+        // formData.append("image", image);
+
+        // setTitle("");
+        // setDescription("");
+        // setCategory("");
+        // setPrice("")
+
+        // const result = await axios.post("https://biodiversitygardens.onrender.com/items", formData, { headers: { "Content-Type": "multipart/form-data"}})
+        // console.log(result)
+        // }
+        // catch(err){
+        //     console.log(err.message)
+        // }
     }
 
     const token = localStorage.getItem('token')
@@ -50,10 +67,9 @@ const AddItem = () => {
 
     return (
         <div>
-            { !admin? (<Alert color="info" className=" alert text-center">Non sei autorizzato ad accedere a questa pagina</Alert>) :
+            { admin? (<Alert color="info" className=" alert text-center">Non sei autorizzato ad accedere a questa pagina</Alert>) :
             <Container>
                 <h2 className="text-center mb-3">Add a new Item</h2>
-                <span className="message">{message}</span>
                 { token ?
                 <Form onSubmit={changeOnclick} encType="multipart/form-data">
                     <FormGroup>
@@ -98,18 +114,20 @@ const AddItem = () => {
                             onChange={(e) => setPrice(e.target.value)}
                         />
                         <br/>
-                        <Label for="image">Choose an image</Label>
+                        {/* <Label for="image">Choose an image</Label>
                         <Input
                             type="file"
                             name="image"
                             placeholder="choose an item"
                             onChange={onChangeImage}
-                        />
+                        /> */}
 
                         
                         <Button color="dark" style={{marginTop: '2rem'}} block>
                             Add Item
                         </Button>
+                        { sendItem ?
+                        <Alert color="info" className="text-center">Prodotto aggiunto!</Alert> : ""}
                     </FormGroup>
                 </Form> : 
                 <Alert className="text-center" color="danger">Login to add items!</Alert>

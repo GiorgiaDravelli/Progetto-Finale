@@ -25,19 +25,23 @@ module.exports.delete_item = (req,res) => {
 }
 
 module.exports.post_item = async (req, res) => {
+    // console.log("post item function", req.body)
+    console.log("req.file: ", req.file)
+    console.log("req.body: ", req.body)
+    console.log("req.body.title: ", req.body.title)
     try {
         const newItem = new Item({
             title: req.body.title,
             description: req.body.description,
             category: req.body.category,
             price: req.body.price,
-            image: req.file
+            // image: req.file
         });
         const item = await newItem.save()
-        res.status(201).json(item);
-        console.log("req.body: " + req.body)
+        res.status(200).json(item);
+        // console.log("req.body: ", req.body)
+        // console.log("req.file: ", req.file)
     } catch (error) {
         res.status(500).json({Error: 'An error occurred.'} + error.message)
-        console.log
     }
 }

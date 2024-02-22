@@ -60,14 +60,15 @@ const Store = () => {
             {items?.map((item)=>(
                 <div className="col-md-2">
                     <Card className="mb-4">
-                        <img
+                        {/* <img
                             alt="img"
                             src={`server/uploads/${item.image}`}
-                        />
+                        /> */}
                         <CardBody>
                             <CardTitle tag="h5">{item.title}</CardTitle>
-                            <CardSubtitle tag="h6">€ {item.price}</CardSubtitle>
+                            <CardText>{item.description}</CardText>
                             <CardText>{item.category}</CardText>
+                            <CardSubtitle tag="h6">€ {item.price}</CardSubtitle>
                                 <Button onClick={() => onAdd(item)}
                                 color="success"
                                 size="sm"
