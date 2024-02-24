@@ -24,8 +24,8 @@ const handleSubmit = async (e) => {
     setLoggedInState("logging")
     const configuration = {
       method: "put",
-      // url: "https://biodiversitygardens.onrender.com/update",
-      url: "http://localhost:3500/update",
+      url: "https://biodiversitygardens.onrender.com/update",
+      // url: "http://localhost:3500/update",
       data: {
         username,
         email,
