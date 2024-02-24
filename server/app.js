@@ -9,7 +9,7 @@ const cors = require("cors");
 
 const Item = require('./db/models/itemModel');
 const itemController = require('./controllers/itemControllers');
-const usersController = require('../controllers/usersControllers');
+const usersController = require('./controllers/usersControllers');
 
 
 // require database connection
