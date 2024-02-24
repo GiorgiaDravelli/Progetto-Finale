@@ -37,8 +37,8 @@ const Store = () => {
     useEffect (() => {
         setLoading(true);
         axios
-            .get('http://localhost:3500/items')
-            // .get('https://biodiversitygardens.onrender.com/items')
+            // .get('http://localhost:3500/items')
+            .get('https://biodiversitygardens.onrender.com/items')
 
             .then((response) => {
                 setItems(response.data);

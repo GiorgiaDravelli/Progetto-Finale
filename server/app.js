@@ -9,6 +9,7 @@ const cors = require("cors");
 
 const Item = require('./db/models/itemModel');
 const itemController = require('./controllers/itemControllers');
+const usersController = require('../controllers/usersControllers');
 
 
 // require database connection
@@ -65,6 +66,12 @@ app.get('/items', itemController.get_items);
 app.post('/items', itemController.post_item);
 app.put('/items/:id', itemController.update_item);
 app.delete('/items/:id', itemController.delete_item);
+
+
+// USERS ROUTES PROVVISORIE - DA SPOSTARE
+
+app.post('/signup', usersController.signup);
+app.post('/login', usersController.login);
 
 
 module.exports = app;
