@@ -14,4 +14,4 @@
   <li>Mongoose</li>
 </ul>
 
-<h2><a href="https://biodiversity-gardens-jv84.onrender.co"/>Provalo!</h2>
+<h2><a href="https://biodiversity-gardens-jv84.onrender.com"/>Provalo!</h2>
