@@ -74,6 +74,7 @@ export const Header = () => {
               </button>
               <ul className="dropdown-menu">
                 <li><Link to="" className="nav-link" onClick={() => handleLogOut()}>Log Out</Link></li>
+                <li><Link to={"/update"} className="nav-link">Modifica Profilo</Link></li>
               </ul>
             </div>
 

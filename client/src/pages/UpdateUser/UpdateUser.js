@@ -1,17 +1,19 @@
-import './SignupForm.css'
-import { Form, Button } from "react-bootstrap";
+import './UpdateUser.css'
+import { Form, Button, Alert } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {Loader} from "../Spinner/Spinner"
+import {Loader} from "../../components/Spinner/Spinner"
+import {Header} from '../../components/Header/Header'
+import {Footer} from '../../components/Footer/Footer'
 
-export const SignupForm = () => {
+export const UpdateUser = () => {
 
 const [username, setUsername] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
-const [register, setRegister] = useState("")
+const [updated, setUpdated] = useState("")
 const [ loggedInState, setLoggedInState] = useState("")
 
 const navigate = useNavigate();
@@ -21,8 +23,9 @@ const handleSubmit = async (e) => {
   try{
     setLoggedInState("logging")
     const configuration = {
-      method: "post",
-      url: "https://biodiversitygardens.onrender.com/signup",
+      method: "put",
+      // url: "https://biodiversitygardens.onrender.com/update",
+      url: "http://localhost:3500/update",
       data: {
         username,
         email,
@@ -32,14 +35,9 @@ const handleSubmit = async (e) => {
 
     let result = await axios(configuration)
       
-    setRegister(true);
+    setUpdated(true);
     console.log(result)
     setLoggedInState("logged")
-    localStorage.setItem('username', result.data.username);
-    localStorage.setItem('token', result.data.token);
-    localStorage.setItem('email', result.data.email);
-    localStorage.setItem('admin', result.data.admin);
-    navigate("/")
   } catch(error) {
     if (!error?.response) {
       alert('No Server Response')
@@ -54,9 +52,11 @@ const handleSubmit = async (e) => {
 }
 
     return (
+      <>
+    <Header />
     <div className="form">
       <div>
-        <h2>Registrati</h2>
+        <h2>Modifica i tuoi dati</h2>
         <Form onSubmit={(e)=>handleSubmit(e)}>
           {/* username */}
           <Form.Group controlId="formBasicUsername">
@@ -101,11 +101,14 @@ const handleSubmit = async (e) => {
               variant="secondary" 
               onClick={(e) => handleSubmit(e)}
               type="submit">
-                Invia
+                Modifica
             </Button>}
+            {updated? (<Alert color="info" className=" alert text-center">I tuoi dati sono stati modificati</Alert>) : ""}
           </div>
         </Form>
       </div>
     </div>
+    <Footer />
+    </>
     )
   }

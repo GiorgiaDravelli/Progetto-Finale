@@ -100,3 +100,19 @@ module.exports.login = (request, response) => {
       });
     });
 };
+
+
+module.exports.update = async (request, response) => {
+ const {id} = request.params
+
+ try{
+  const updateUser = await User.findByIdAndUpdate(id, {
+    username: request?.body?.firstname,
+    email: request?.body?.email,
+    password: request?.body?.password,
+  })
+  response.json(updateUser)
+ } catch (error) {
+  throw new Error(error)
+ }
+}

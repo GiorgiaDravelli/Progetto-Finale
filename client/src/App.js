@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { Signup } from "./pages/Signup/Signup.js"
+import { UpdateUser } from "./pages/UpdateUser/UpdateUser.js"
 import { Login } from "./pages/Login/Login.js"
 import { Home } from "./pages/Home/Home.js"
 import  Store  from "./pages/Store/Store.js"
@@ -25,6 +26,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/addItem" element={<AddItem />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/update" element={<UpdateUser />} />
           </Routes>
       </Router>
     </div>

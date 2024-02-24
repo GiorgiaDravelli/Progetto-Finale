@@ -72,6 +72,7 @@ app.delete('/items/:id', itemController.delete_item);
 
 app.post('/signup', usersController.signup);
 app.post('/login', usersController.login);
+app.put('/update', usersController.update);
 
 
 module.exports = app;

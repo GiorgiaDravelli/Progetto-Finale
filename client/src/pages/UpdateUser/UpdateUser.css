@@ -1,0 +1,22 @@
+.form {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+.btn-signup {
+ margin-top: 1rem;
+ background: #2e913b;
+ border: 0;
+ padding: 10px 24px;
+ color: #fff;
+ transition: 0.4s;
+ border-radius: 4px;
+}
+
+.btn:hover {
+    background: #57d268;
+}

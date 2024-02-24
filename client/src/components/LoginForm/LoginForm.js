@@ -15,46 +15,45 @@ const [ loggedInState, setLoggedInState] = useState("")
 
 const navigate = useNavigate();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoggedInState("logging")
-    const configuration = {
-      method: "post",
-      url: "https://biodiversitygardens.onrender.com/login",
-      data: {
-        email,
-        password,
-      },
-    };
-  
-    axios(configuration)
-        .then((result) => {
-          console.log(result)
-          setLogin(true)
-          setLoggedInState("logged")
-          const username = result.data.username
-          localStorage.setItem('username', result.data.username);
-          console.log(username)
-          localStorage.setItem('token', result.data.token);
-          console.log(result.data.token)
-          localStorage.setItem('email', result.data.email);
-          console.log(result.data.email)
-          localStorage.setItem('id', result.data._id);
-          localStorage.setItem('admin', result.data.admin);
+    try{
+      setLoggedInState("logging")
+      const configuration = {
+        method: "post",
+        url: "https://biodiversitygardens.onrender.com/login",
+        data: {
+          email,
+          password,
+        },
+      };
+    
+      let result = await axios(configuration)
+      console.log(result)
+      setLogin(true)
+      setLoggedInState("logged")
+      const username = result.data.username
+      localStorage.setItem('username', result.data.username);
+      console.log(username)
+      localStorage.setItem('token', result.data.token);
+      console.log(result.data.token)
+      localStorage.setItem('email', result.data.email);
+      console.log(result.data.email)
+      localStorage.setItem('id', result.data._id);
+      localStorage.setItem('admin', result.data.admin);
 
-          navigate("/")
-        })
-        .catch((error) => {
-          if (!error?.response) {
-            alert('No Server Response')
-          } else if ( error.response?.status === 400) {
-            alert('Missing Username or Password')
-          } else if (error.response?.status === 401) {
-            alert('Unauthorized')
-          } else ( alert('Login failed'))
-          error = new Error();
-          setLoggedInState("")
-        });
+      navigate("/")
+    } catch(error) {
+        if (!error?.response) {
+          alert('No Server Response')
+        } else if ( error.response?.status === 400) {
+          alert('Missing Username or Password')
+        } else if (error.response?.status === 401) {
+          alert('Unauthorized')
+        } else ( alert('Login failed'))
+        error = new Error();
+        setLoggedInState("")
+    };
   }
   
     return (
