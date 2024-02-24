@@ -21,7 +21,7 @@ const handleSubmit = (e) => {
   setLoggedInState("logging")
   const configuration = {
     method: "post",
-    url: "https://biodiversitygardens.onrender.com/signup",
+    url: "https://biodiversitygardens.onrender.com",
     data: {
       username,
       email,
